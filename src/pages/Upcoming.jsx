@@ -16,8 +16,8 @@ const Upcoming = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Upcoming Movies</h1>
-      <div className="flex flex-wrap justify-center">
+      <h1 className="text-2xl font-bold ml-10">Upcoming Movies</h1>
+      <div className="flex flex-wrap justify-center mt-2">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

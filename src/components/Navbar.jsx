@@ -14,36 +14,42 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="container mx-auto bg-gray-800 p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
-      <div>
-        <Link to={'/'} className="text-2xl px-3 py-2 rounded hover:bg-gray-700">MovieDB</Link>
+    <nav className="container mx-auto bg-gray-800 p-4 flex flex-col sm:flex-row justify-between items-center fixed top-0 left-0 right-0 z-50">
+      <div className="mb-2 sm:mb-0">
+        <Link to="/" className="text-2xl px-3 py-2 rounded hover:bg-gray-700">
+          MovieDB
+        </Link>
       </div>
       <form
         onSubmit={handleSearch}
-        className="flex justify-center items-center gap-10 bg-transparent"
+        className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-10 bg-transparent w-full sm:w-auto"
       >
-        <Link to="/popular" className="px-3 py-2 rounded hover:bg-gray-700">
-          Popular
-        </Link>
-        <Link to="/top-rated" className="px-3 py-2 rounded hover:bg-gray-700">
-          Top Rated
-        </Link>
-        <Link to="/upcoming" className="px-3 py-2 rounded hover:bg-gray-700">
-          Upcoming
-        </Link>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search..."
-          className="input px-3 py-2 rounded-l border border-gray-700 outline-none"
-        />
-        <button
-          type="submit"
-          className="px-3 py-2 bg-blue-500 text-white rounded"
-        >
-          Search
-        </button>
+        <div className="flex gap-4 sm:gap-10">
+          <Link to="/popular" className="px-3 py-2 rounded hover:bg-gray-700">
+            Popular
+          </Link>
+          <Link to="/top-rated" className="px-3 py-2 rounded hover:bg-gray-700">
+            Top Rated
+          </Link>
+          <Link to="/upcoming" className="px-3 py-2 rounded hover:bg-gray-700">
+            Upcoming
+          </Link>
+        </div>
+        <div className="flex mt-2 sm:mt-0">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search..."
+            className="input px-3 py-2 rounded-l border border-gray-700 outline-none"
+          />
+          <button
+            type="submit"
+            className="px-3 py-2 bg-blue-500 text-white rounded-r"
+          >
+            Search
+          </button>
+        </div>
       </form>
     </nav>
   );
