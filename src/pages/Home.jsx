@@ -7,11 +7,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Features from '../components/Features';
+import { useLocation } from 'react-router-dom';
+
+
 
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -20,6 +24,10 @@ const Home = () => {
     };
     fetchMovies();
   }, [page]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className=''>
@@ -37,7 +45,7 @@ const Home = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper mt-1"
+        className="mySwiper "
       >
         <SwiperSlide>
           <img src={require('../../src/assets/img2.webp')} alt='slide' className='swiper-image' />

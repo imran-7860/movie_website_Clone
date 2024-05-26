@@ -27,7 +27,7 @@ const MovieDetailPage = () => {
   if (!movie) return <div>Loading...</div>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 container mx-auto">
       <MovieDetail movie={movie}  />
       <h2 className="text-2xl font-bold mt-4 ml-10">Cast</h2>
       <CastList cast={cast} />
