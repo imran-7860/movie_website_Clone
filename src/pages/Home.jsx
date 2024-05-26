@@ -22,9 +22,11 @@ const Home = () => {
   }, [page]);
 
   return (
-    <div className='container mx-auto'>
+    <div className=''>
       <Swiper
         spaceBetween={1}
+        slidesPerView={1.3}
+        loop={true}
         centeredSlides={true}
         autoplay={{
           delay: 2500,
@@ -54,7 +56,7 @@ const Home = () => {
         </SwiperSlide>
        
       </Swiper>
-      <div className="p-4">
+      <div className="p-4 ">
         <div className="flex flex-wrap justify-center">
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />

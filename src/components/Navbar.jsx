@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [inputOpen, setInputOpen] = useState(false);
-  const [open ,setOpen] = useState(false)
+  const [open, setOpen] = useState(true);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -34,63 +34,12 @@ const Navbar = () => {
           >
             MovieDB
           </Link>
-          <div  onClick={()=>setOpen(!open)} className="md:hidden ">
-          <MdMenu />
+          <div onClick={() => setOpen(!open)} className="md:hidden ">
+            <MdMenu />
           </div>
         </div>
-      {open ? <form
-          onSubmit={handleSearch}
-          className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-10 bg-transparent w-full sm:w-auto"
-        >
-          <div className="flex gap-x-2 sm:gap-x-6">
-            <Link
-              to="/popular"
-              className="px-3 py-2 rounded hover:bg-gray-700 font-medium"
-            >
-              Popular
-            </Link>
-            <Link
-              to="/top-rated"
-              className="px-3 py-2 rounded hover:bg-gray-700 font-medium"
-            >
-              Top Rated
-            </Link>
-            <Link
-              to="/upcoming"
-              className="px-3 py-2 rounded hover:bg-gray-700 font-medium"
-            >
-              Upcoming
-            </Link>
-          </div>
-          <div className="flex items-center mt-2 sm:mt-0 gap-2">
-            
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search Movie Here.."
-                className={` rounded-full border-b h-9  duration-500 border-gray-700 outline-none  text-black focus:bg-gray-200 ${inputOpen ? "md:w-60 w-30 md:px-4 px-3  bg-gray-300 "   : " w-0"}  `}
-              />
-          
-            {/* {inputOpen && (
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search Movie Here.."
-                className="input px-3 py-2 md:px-4  rounded-full border-b  border-gray-700 outline-none bg-gray-300 text-black focus:bg-gray-200 "
-              />
-            )} */}
 
-            <button
-              type="submit"
-              onClick={handleClick}
-              className="w-9 h-9 bg-red-800 text-white rounded-full font-medium flex justify-center items-center"
-            >
-              {inputOpen && query.length < 1 ? <IoClose /> : <FaSearch />}
-            </button>
-          </div>
-        </form> : <form
+       {open &&  <form
           onSubmit={handleSearch}
           className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-10 bg-transparent w-full sm:w-auto"
         >
@@ -115,24 +64,15 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex items-center mt-2 sm:mt-0 gap-2">
-            
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search Movie Here.."
-                className={` rounded-full border-b h-9  duration-500 border-gray-700 outline-none  text-black focus:bg-gray-200 ${inputOpen ? "md:w-60 w-30 md:px-4 px-3  bg-gray-300 "   : " w-0"}  `}
-              />
-          
-            {/* {inputOpen && (
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search Movie Here.."
-                className="input px-3 py-2 md:px-4  rounded-full border-b  border-gray-700 outline-none bg-gray-300 text-black focus:bg-gray-200 "
-              />
-            )} */}
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search Movie Here.."
+              className={` rounded-full border-b h-9  duration-500 border-gray-700 outline-none  text-black focus:bg-gray-200 ${
+                inputOpen ? "md:w-60 w-30 md:px-4 px-3  bg-gray-300 " : " w-0"
+              }  `}
+            />
 
             <button
               type="submit"
@@ -142,10 +82,12 @@ const Navbar = () => {
               {inputOpen && query.length < 1 ? <IoClose /> : <FaSearch />}
             </button>
           </div>
-        </form> }
+        </form>}
       </nav>
     </div>
   );
 };
 
 export default Navbar;
+
+

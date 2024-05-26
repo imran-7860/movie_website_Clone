@@ -9,6 +9,7 @@ import SearchResults from './pages/SearchResults';
 import './App.css'
 import Footer from './components/Footer';
 import Popular from './pages/Popular';
+import Navbar2 from './components/Navbar2';
 
 
 
@@ -16,7 +17,8 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
+        <Navbar2 />
         <Routes>
           
           
