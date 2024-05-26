@@ -28,8 +28,8 @@ const MovieDetailPage = () => {
 
   return (
     <div className="p-4">
-      <MovieDetail movie={movie} />
-      <h2 className="text-2xl font-bold mt-4">Cast</h2>
+      <MovieDetail movie={movie}  />
+      <h2 className="text-2xl font-bold mt-4 ml-10">Cast</h2>
       <CastList cast={cast} />
     </div>
   );

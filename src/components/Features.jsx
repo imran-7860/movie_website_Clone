@@ -3,6 +3,7 @@ import { LuUser } from "react-icons/lu";
 
 const Features = () => {
   return (
+   
     <div className="container mx-auto px-4">
       <div className="text-4xl font-semibold mt-5">Features..</div>
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import DefaultImage from "../assets/defaultImage.png"
 
 const CastList = ({ cast }) => {
   return (
@@ -9,7 +10,12 @@ const CastList = ({ cast }) => {
             src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
             alt={member.name}
             className="w-full h-auto rounded"
+            onError={(e) => {
+              e.target.onerror = null; // Prevents infinite loop if the default image also fails
+              e.target.src =DefaultImage; // Replace with the path to your default image
+            }}
           />
+
           <p className="text-center">{member.name}</p>
         </div>
       ))}
