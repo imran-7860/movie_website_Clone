@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { MdMenu } from "react-icons/md";
-// import ModelSidePanel from "./ModelSidePanel";
+import ModelSidePanel from "./ModelSidePanel";
 
 const Navbar2 = () => {
   const [query, setQuery] = useState("");
@@ -74,7 +74,7 @@ const Navbar2 = () => {
                     placeholder="Search Movie Here.."
                     className={` rounded-full border-b h-9  duration-500 border-gray-700 outline-none  text-black focus:bg-gray-200 ${
                       inputOpen
-                        ? "md:w-60 w-30 md:px-4 px-3  bg-gray-300 "
+                        ? "md:w-60 sm:w-30 md:px-4 px-3 w-28 bg-gray-300 "
                         : " w-0"
                     }  `}
                   />
@@ -99,7 +99,7 @@ const Navbar2 = () => {
         </div>
 
         <div className="md:hidden">
-          {/* <ModelSidePanel open={open} setOpen={setOpen} /> */}
+          <ModelSidePanel open={open} setOpen={setOpen} />
         </div>
         {/* */}
       </nav>
