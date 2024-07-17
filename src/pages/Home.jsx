@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import api from "../api";
 import MovieCard from "../components/MovieCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,21 +8,24 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Features from "../components/Features";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { useApiKeyContext } from "../components/ApiProvider";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const { pathname } = useLocation();
-  const Api_key = 'c45a857c193f6302f2b5061c3b85e743'
+  const { Api_key } = useApiKeyContext();
 
   useEffect(() => {
     const fetchMovies = async () => {
-      // const response = await api.get(`/movie/popular`, { params: { page } });
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${Api_key}&language=en-US&page=${page}`)
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${Api_key}&language=en-US&page=${page}`
+      );
+      console.log(response)
       setMovies(response.data.results);
     };
     fetchMovies();
-  }, [page]);
+  }, [page, Api_key]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

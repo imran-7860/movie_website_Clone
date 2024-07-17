@@ -16,7 +16,7 @@ const Navbar2 = () => {
     e.preventDefault();
     if (query) {
       setOpen(false);
-      navigate(`/search?query=${query}`);
+      navigate(`/search/${query}`);
     }
     setQuery("");
   };
@@ -28,7 +28,7 @@ const Navbar2 = () => {
     setOpen(false);
   };
   return (
-    <div className="fixed top-0 left-0 z-20 w-full text-white ">
+    <header className="fixed top-0 left-0 z-20 w-full text-white ">
       <nav>
         <div className="bg-black ">
           <div
@@ -42,10 +42,7 @@ const Navbar2 = () => {
             </Link>
 
             <div className={` md:flex justify-center items-center space-x-4`}>
-              <form
-                onSubmit={handleSearch}
-                className="flex flex-col items-center justify-center w-full bg-transparent sm:flex-row sm:w-auto"
-              >
+              <div className="flex flex-col items-center justify-center w-full bg-transparent sm:flex-row sm:w-auto">
                 <div className="hidden gap-x-2 md:flex">
                   <Link
                     to="/popular"
@@ -66,7 +63,10 @@ const Navbar2 = () => {
                     Upcoming
                   </Link>
                 </div>
-                <div className="flex items-center gap-4 mt-2 sm:mt-0 md:gap-2">
+                <form
+                  onSubmit={handleSearch}
+                  className="flex items-center gap-4 mt-2 sm:mt-0 md:gap-2"
+                >
                   <input
                     type="text"
                     value={query}
@@ -92,8 +92,8 @@ const Navbar2 = () => {
                   >
                     {open ? <IoClose className="text-red-500" /> : <MdMenu />}
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ const Navbar2 = () => {
         </div>
         {/* */}
       </nav>
-    </div>
+    </header>
   );
 };
 

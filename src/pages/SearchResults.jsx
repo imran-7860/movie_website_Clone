@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import api from "../api";
+import { Link,  useParams } from "react-router-dom";
+import { useApiKeyContext } from "../components/ApiProvider";
 import MovieCard from "../components/MovieCard";
+import axios from "axios";
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
+
 
 const SearchResults = () => {
-  const query = useQuery().get("query");
+ 
+  const { query } = useParams();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const { Api_key } = useApiKeyContext();
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await api.get(`/search/movie`, {
-        params: { query, page },
-      });
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${Api_key}&language=en-US&query=${query}&page=${page}`
+      );
       setMovies(response.data.results);
     };
     fetchMovies();
-  }, [query, page]);
+  }, [query, page, Api_key]);
 
   return (
     <div className="p-4 min-h-screen container mx-auto">
@@ -52,10 +53,15 @@ const SearchResults = () => {
         </>
       ) : (
         <div>
-           <h1 className="text-lg  px-2">No result for <span className="font-bold text-red-600 text-2xl">"{query}"</span> </h1>
+          <h1 className="text-lg  px-2">
+            No result for{" "}
+            <span className="font-bold text-red-600 text-2xl">"{query}"</span>{" "}
+          </h1>
           <div className="mt-5 text-lg px-2">
-
-            Back to <Link to={"/"} className="italic text-blue-400 text-lg">Home Page &larr;</Link>
+            Back to{" "}
+            <Link to={"/"} className="italic text-blue-400 text-lg">
+              Home Page &larr;
+            </Link>
           </div>
         </div>
       )}

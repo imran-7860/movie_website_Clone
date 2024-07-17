@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieDetail = ({ movie }) => {
   return (
-    <div className="p-4 md:flex">
+    <div className="p-4 md:py-10 lg:py-20  md:flex">
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}

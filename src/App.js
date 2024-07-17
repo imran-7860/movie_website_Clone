@@ -21,8 +21,8 @@ const App = () => {
           <Route path="/popular" element={<Popular />} />
           <Route path="/top-rated" element={<TopRated />} />
           <Route path="/upcoming" element={<Upcoming />} />
-          <Route path="/movie/:id" element={<MovieDetailPage />} />
-          <Route path="/search" element={<SearchResults />} />
+          <Route path="/movie/:movie_id" element={<MovieDetailPage />} />
+          <Route path="/search/:query" element={<SearchResults />} />
         </Routes>
         <Footer />
       </div>
